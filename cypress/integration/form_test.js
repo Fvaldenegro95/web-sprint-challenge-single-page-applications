@@ -43,8 +43,8 @@ describe('Pizza Order Application', () => {
                 .check()
             instructionsInput()
                 .should('have.value', '')
-                .type('Fast Please!')
-                .should('have.value', 'Fast Please!')
+                .type('Extra Gabagool ova heeere')
+                .should('have.value', 'Extra Gabagool ova heeere')
 
         })
         it('Order Button Working', () => {
@@ -57,12 +57,10 @@ describe('Pizza Order Application', () => {
             sauceRadio()
             .check()
             instructionsInput()
-            .type('Fast Please!')
+            .type('Extra Gabagool ova heeere')
             submitButton()
             .click()
-
         })
     })
-
 })
 

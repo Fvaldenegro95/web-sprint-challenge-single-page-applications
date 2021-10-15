@@ -79,14 +79,17 @@ useEffect(() => {
 
   return (
 
-    <div>
+    <div className='App'>
       {/* header */}
+      <div className='card'>
       <h1>Lambda Eats</h1>
       {/* homepage, p only shows when you are on 3000 */}
+
       <Route exact path='/'>
       <p>Let's get some 'za family style</p>
       <Home />
       </Route>
+      </div>
       <Route path='/pizza'>
     <Form
     values={formValues}

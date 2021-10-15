@@ -34,6 +34,7 @@ export default function Form(props){
         </div>
 
     <div className='form-group inputs'>
+        <div>
     <label>Name
             <input
             id='name-input'
@@ -43,7 +44,9 @@ export default function Form(props){
             type='text'
             />
         </label>
-        <label>Special instructions
+        </div>
+        <div>
+        <label>Customize
             <input
             id='special-text'
             value={values.instructions}
@@ -52,7 +55,9 @@ export default function Form(props){
             type='text'
             />
         </label>
+        </div>
         {/* dropdown */}
+        <div>
         <label>Size
             <select 
         id='size-dropdown'
@@ -67,6 +72,7 @@ export default function Form(props){
             <option value='XL'>Family Style</option>
           </select>
         </label>
+        </div>
         {/* radio buttons */}
         <label> Alfredo
             <input
@@ -144,8 +150,9 @@ export default function Form(props){
             checked={values.gabagool}
           />
         </label>Gabagool
+        <div>
         <button id='order-button' disabled={disabled}>Submit your order!</button>
-
+        </div>
     </div>
 </form>
     )
