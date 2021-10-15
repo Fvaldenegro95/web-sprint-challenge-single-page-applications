@@ -25,7 +25,6 @@ export default function Form(props){
         <div className='form-submit'>
             <h2>Let's Make a Pizza!</h2>
 
-            <button id='order-button' disabled={disabled}>Submit your order!</button>
             <div className='errors'>
                 <div>{errors.name}</div>
                 <div>{errors.size}</div>
@@ -145,6 +144,8 @@ export default function Form(props){
             checked={values.gabagool}
           />
         </label>Gabagool
+        <button id='order-button' disabled={disabled}>Submit your order!</button>
+
     </div>
 </form>
     )

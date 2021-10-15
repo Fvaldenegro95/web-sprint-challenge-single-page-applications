@@ -4,7 +4,8 @@ import * as yup from 'yup'
 import axios from 'axios'
 import schema from './validation/formSchema'
 import Form from './components/form'
-import {BrowserRouter, Route, Link, useHistory} from 'react-router-dom'
+import  {Route} from 'react-router-dom'
+import Home from './components/Home'
 
 //if break, check false value, maybe string?
 const initialFormValues = { 
@@ -34,14 +35,6 @@ export default function App(){
   const [formErrors, setFormErrors] = useState(initialFormErrors)
   const [disabled, setDisabled] = useState(initialDisabled)
 
-  // const newOrder = () => {
-  //   axios.get('https://reqres.in/api/orders')
-  //   .then(response => {
-  //     setOrder([response.data, ...order]);
-  //   }).catch(error => {
-  //     console.error(error)
-  //   })
-  // }
 const postNewOrder = newOrder => {
   axios.post('https://reqres.in/api/orders', newOrder)
   .then(res => {
@@ -73,7 +66,7 @@ const formSubmit = () => {
     size:formValues.size.trim(),
     instructions:formValues.instructions.trim(),
     sauce: formValues.sauce.trim(),
-    toppings: [ 'pepperoni', 'mushrooms', 'extraCheese', 'pineapple'].filter(topping => !!formValues[topping])
+    toppings: [ 'pepperoni', 'mushrooms', 'extraCheese', 'pineapple'].filter(topping => formValues[topping])
   }
 postNewOrder(newOrder)
 }
@@ -85,12 +78,14 @@ useEffect(() => {
 }, [formValues])
 
   return (
+
     <div>
-      <BrowserRouter>
-      <Route exact path='/'>
+      {/* header */}
       <h1>Lambda Eats</h1>
-      <p>lets get some 'za family style</p>
-      <Link id='order-pizza' to='/pizza'>Pizza time</Link>
+      {/* homepage, p only shows when you are on 3000 */}
+      <Route exact path='/'>
+      <p>Let's get some 'za family style</p>
+      <Home />
       </Route>
       <Route path='/pizza'>
     <Form
@@ -101,7 +96,6 @@ useEffect(() => {
     errors={formErrors}
     />
     </Route>
-    </BrowserRouter>
 </div>
   );
 };
