@@ -8,6 +8,7 @@ describe('Pizza Order Application', () => {
     const toppingBoxes = () => cy.get('[type="checkbox"]')
     const instructionsInput = () => cy.get('input[name=instructions]')
     const submitButton = () => cy.get('button[id="order-button"]')
+    const sauceRadio = () => cy.get('[type="radio"]')
 
     it('Sanity test', () => {
         expect(1 + 2).to.equal(3);
@@ -22,14 +23,14 @@ describe('Pizza Order Application', () => {
         toppingBoxes().should('exist')
         instructionsInput().should('exist')
         submitButton().should('exist')
+        sauceRadio().should('exist')
     })
-
-    describe('Inputs can be filled and submitted?', () => {
-        it('Inputs with interaction?', () => {
+    describe('Input can be filled and submitted', () => {
+        it('Inputs with interaction', () => {
             nameInput()
                 .should('have.value', '')
-                .type('Felipe')
-                .should('have.value', 'Felipe')
+                .type('Tony')
+                .should('have.value', 'Tony')
             sizeDropdown()
                 .should('have.value', '')
                 .select('S')
@@ -38,24 +39,30 @@ describe('Pizza Order Application', () => {
                 .select('XL')
             toppingBoxes()
                 .check()
-            instructionsInput()
-                .should('have.value', '')
-                .type('No instructions')
-                .should('have.value', 'No instructions')
-        })
-
-        it('Add to Order button works?', () => {
-            nameInput()
-                .type('Felipe')
-            sizeDropdown()
-                .select('L')
-            toppingBoxes()
+            sauceRadio()
                 .check()
             instructionsInput()
-                .type('No further instructions')
+                .should('have.value', '')
+                .type('Fast Please!')
+                .should('have.value', 'Fast Please!')
+
+        })
+        it('Order Button Working', () => {
+            nameInput()
+            .type('Tony')
+            sizeDropdown()
+            .select('L')
+            toppingBoxes()
+            .check()
+            sauceRadio()
+            .check()
+            instructionsInput()
+            .type('Fast Please!')
             submitButton()
-                .click()
+            .click()
+
         })
     })
 
 })
+
